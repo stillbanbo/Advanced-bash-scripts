@@ -37,9 +37,24 @@ dpkg: 处理软件包xxx(–configure)时出错
 由于依赖关系问题 仍未被配置
 （个人习惯：root用户进行操作）
 解决方法：
-第一步：mv /var/lib/dpkg/info /var/lib/dpkg/info_bak
+第一步：mv /var/lib/dpkg/info /var/lib/dpkg/info_bak 
+
 第二步：mkdir /var/lib/dpkg/info
+
 第三步：apt-get update && apt-get -f install
+
 第四步：mv /var/lib/dpkg/info/* /var/lib/dpkg/info_bak/
+
 第五步：rm -rf /var/lib/dpkg/info
+
 第六步：mv /var/lib/dpkg/info_bak /var/lib/dpkg/info
+
+## 上述方法不是很有用,有用的方法
+```
+# change user: USER=root
+# change port: Environment="JENKINS_PORT=8088"
+
+$ vi /etc/systemd/system/multi-user.target.wants/jenkins.service 
+
+$ apt-get install jenkins
+
